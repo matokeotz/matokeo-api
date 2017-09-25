@@ -10,10 +10,10 @@ from api.models.school_models import School
 from api.serializers.school_serializers import SchoolSerializer, SchoolStatisticsSerializer, SchoolSubjectSerializer
 
 class SchoolsView(ListAPIView):
-	''' 
-		This is a read-only views that lets users
-		see a list of all available schools
-	'''
-	model = School
-	serializer_class = SchoolSerializer
-	queryset = School.objects.all()
+    ''' 
+        This is a read-only views that lets users
+        see a list of all available schools
+    '''
+    model = School
+    serializer_class = SchoolSerializer
+    queryset = School.objects.all()

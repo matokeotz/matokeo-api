@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.db.models import Model, CharField, ForeignKey, IntegerField, DecimalField, BooleanField, DateTimeField
 
 from api.models.school_models import School
+
 # model for regions
 class Region(Model):
     name = CharField(max_length=50, unique=True, null=False, default="Unknown Region", db_index=True)

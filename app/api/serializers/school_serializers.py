@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer, StringRelatedField, PrimaryKeyRelatedField,\
-	SlugRelatedField, HyperlinkedIdentityField
+    SlugRelatedField, HyperlinkedIdentityField
 from rest_framework import serializers
 
 from api.models.school_models import School, SchoolStatistics
@@ -14,26 +14,26 @@ class SchoolSerializer(ModelSerializer):
 
 # serializer to link schools with aggregate grade stats
 class SchoolStatisticsSerializer(ModelSerializer):
-	school = SlugRelatedField(
-		slug_field='short_name',
-		read_only=True
-	)
+    school = SlugRelatedField(
+        slug_field='short_name',
+        read_only=True
+    )
 
-	class Meta:
-		model = SchoolStatistics
-		fields = ('school', 'exam_year')
+    class Meta:
+        model = SchoolStatistics
+        fields = ('school', 'exam_year')
 
 # serializer to link schools with available subjects
 class SchoolSubjectSerializer(ModelSerializer):
-	school = SlugRelatedField(
-		slug_field='short_name',
-		read_only=True
-	)
-	subject = SlugRelatedField(
-		slug_field='name',
-		read_only=True
-	)
-	
-	class Meta:
-		model = SchoolSubject
-		fields = ('school', 'subject')
+    school = SlugRelatedField(
+        slug_field='short_name',
+        read_only=True
+    )
+    subject = SlugRelatedField(
+        slug_field='name',
+        read_only=True
+    )
+    
+    class Meta:
+        model = SchoolSubject
+        fields = ('school', 'subject')
