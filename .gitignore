@@ -102,3 +102,6 @@ ENV/
 
 # secret key
 app/app/settings/key.py
+
+# migrations
+app/api/migrations
