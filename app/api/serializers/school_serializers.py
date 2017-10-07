@@ -3,7 +3,7 @@ from rest_framework.serializers import ModelSerializer, StringRelatedField, Prim
 from rest_framework import serializers
 
 from api.models.school_models import School, SchoolStatistics
-from api.models.subject_models import SchoolSubject
+# from api.models.subject_models import SchoolSubject
 
 # serializer for schools
 class SchoolSerializer(ModelSerializer):
@@ -23,17 +23,17 @@ class SchoolStatisticsSerializer(ModelSerializer):
         model = SchoolStatistics
         fields = ('school', 'exam_year')
 
-# serializer to link schools with available subjects
-class SchoolSubjectSerializer(ModelSerializer):
-    school = SlugRelatedField(
-        slug_field='short_name',
-        read_only=True
-    )
-    subject = SlugRelatedField(
-        slug_field='name',
-        read_only=True
-    )
+# # serializer to link schools with available subjects
+# class SchoolSubjectSerializer(ModelSerializer):
+#     school = SlugRelatedField(
+#         slug_field='short_name',
+#         read_only=True
+#     )
+#     subject = SlugRelatedField(
+#         slug_field='name',
+#         read_only=True
+#     )
     
-    class Meta:
-        model = SchoolSubject
-        fields = ('school', 'subject')
+#     class Meta:
+#         model = SchoolSubject
+#         fields = ('school', 'subject')
