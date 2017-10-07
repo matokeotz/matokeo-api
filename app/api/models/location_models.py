@@ -15,9 +15,6 @@ class Region(Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return '/region/'+ self.name.lower() + '/'
-
 # model for districts
 class District(Model):
     name = CharField(max_length=50, unique=True, null=False, default="Unknown District")
@@ -26,9 +23,6 @@ class District(Model):
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return '/region/district/'+ self.name.lower() + '/'
 
 # model for zones
 class Zone(Model):

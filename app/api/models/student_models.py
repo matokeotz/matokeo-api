@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.db.models import Model, CharField, ForeignKey, IntegerField, DecimalField, BooleanField, DateTimeField
 
 from api.models.school_models import School
+from api.models.subject_models import Subject
+from api.models.grade_models import Grade
 
 # model for students
 class Student(Model):

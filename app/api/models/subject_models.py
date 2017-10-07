@@ -21,12 +21,15 @@ class Subject(Model):
 
 # model to link subject with grades and statistics
 class SubjectGradeStatistics(Model):
-    grade = ForeignKey(Grade)
-    exam_year = IntegerField()
     school = ForeignKey(School)
     subject = ForeignKey(Subject)
+    grade = ForeignKey(Grade)
+    exam_year = IntegerField()
     student_count = IntegerField()
     gender = CharField(max_length=2)
+
+    def __str__(self):
+        return self.subject
 
 # model to link schools with subjects
 class SchoolSubject(Model):
