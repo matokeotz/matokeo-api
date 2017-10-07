@@ -1,8 +1,8 @@
 from django.conf.urls import url
 
-from api.views.school_views import SchoolsView
+from api.views.school_views import SchoolView
 
 urlpatterns = [
-    url(r'^schools/', SchoolsView.as_view(), name = 'schools'),
+    url(r'^schools/', SchoolView.as_view(), name = 'schools'),
 
 ]
