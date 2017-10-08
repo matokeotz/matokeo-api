@@ -14,10 +14,7 @@ class SchoolSerializer(ModelSerializer):
 
 # serializer to link schools with aggregate grade stats
 class SchoolStatisticsSerializer(ModelSerializer):
-    school = SlugRelatedField(
-        slug_field='short_name',
-        read_only=True
-    )
+    school = StringRelatedField()
 
     class Meta:
         model = SchoolStatistics

@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from django_filters.rest_framework import Filter, FilterSet
 from django_filters.fields import Lookup
 
+from api.utils.filters import field_filter
+
 from api.models.school_models import School, SchoolStatistics
 
 from api.serializers.school_serializers import SchoolSerializer, SchoolStatisticsSerializer
@@ -25,4 +27,7 @@ class SchoolStatisticsView(ListAPIView):
     '''
     model = SchoolStatistics
     serializer_class = SchoolStatisticsSerializer
-    queryset = SchoolStatistics.objects.all()
+
+    def get_queryset(self):
+        school = self.kwargs['school']
+        return SchoolStatistics.objects.filter(school__short_name=school)
