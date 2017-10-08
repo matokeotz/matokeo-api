@@ -27,4 +27,4 @@ class StudentSubjectGrade(Model):
     grade = ForeignKey(Grade)
 
     def __str__(self):
-        return self.student
+        return str(self.student)

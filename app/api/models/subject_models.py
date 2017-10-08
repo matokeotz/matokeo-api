@@ -16,8 +16,8 @@ class Subject(Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return '/subject/'+ self.name.lower() + '/'
+    def __unicode__(self):
+        return self.name
 
 # model to link subject with grades and statistics
 class SubjectGradeStatistics(Model):
@@ -29,12 +29,4 @@ class SubjectGradeStatistics(Model):
     gender = CharField(max_length=2)
 
     def __str__(self):
-        return self.subject
-
-# model to link schools with subjects
-class SchoolSubject(Model):
-    school = ForeignKey(School)
-    subject = ForeignKey(Subject)
-
-    def __str__(self):
-        return self.school
+        return str(self.subject)

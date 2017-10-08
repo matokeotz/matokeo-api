@@ -16,8 +16,8 @@ class School(Model):
     def __str__(self):
         return self.short_name
 
-    def get_absolute_url(self):
-        return '/school/'+ self.short_name.lower() + '/'
+    def __unicode__(self):
+        return self.short_name
 
 # model to link schools with years
 class SchoolStatistics(Model):
@@ -27,4 +27,4 @@ class SchoolStatistics(Model):
     div_count = IntegerField()
 
     def __str__(self):
-        return self.school
+        return str(self.school)
