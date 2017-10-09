@@ -7,8 +7,11 @@ from django.db.models import Model, CharField, ForeignKey, IntegerField, Decimal
 from api.models.school_models import School
 from api.models.grade_models import Grade
 
-# model for subjects
 class Subject(Model):
+    '''
+        Stores information on a single subject
+    '''
+
     code = CharField(max_length=20, null=False, unique=True, db_index=True)
     name = CharField(max_length=100, null= False, unique=True)
     is_required = BooleanField(default=False)
@@ -19,8 +22,15 @@ class Subject(Model):
     def __unicode__(self):
         return self.name
 
-# model to link subject with grades and statistics
 class SubjectGradeStatistics(Model):
+    '''
+        Stores the aggregate grade information
+        for a specific subject in a specific
+        school in a specific year. Relates 
+        :model:`api.School`, :model:`api.Subject`,
+        and :model:`api.Grade`.
+    '''
+
     school = ForeignKey(School)
     subject = ForeignKey(Subject)
     grade = ForeignKey(Grade)

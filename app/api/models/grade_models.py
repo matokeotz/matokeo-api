@@ -4,8 +4,11 @@ from datetime import datetime
 from django.utils import timezone
 from django.db.models import Model, CharField, ForeignKey, IntegerField, DecimalField, BooleanField, DateTimeField
 
-# model for grades
 class Grade(Model):
+    '''
+        Stores information on a single grade
+    '''
+
     letter = CharField(max_length=1, unique=True, db_index=True)
     value = IntegerField(unique=True)
 

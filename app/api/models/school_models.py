@@ -4,8 +4,11 @@ from datetime import datetime
 from django.utils import timezone
 from django.db.models import Model, CharField, ForeignKey, IntegerField, DecimalField, BooleanField, DateTimeField
 
-# model to represent schools
 class School(Model):
+    '''
+        Stores information on a single school.
+    '''
+
     cno = CharField(max_length=10, null=False)
     short_name = CharField(max_length=50, null=False, unique=True, db_index=True)
     long_name = CharField(max_length=100, null=False)
@@ -19,8 +22,13 @@ class School(Model):
     def __unicode__(self):
         return self.short_name
 
-# model to link schools with years
 class SchoolStatistics(Model):
+    '''
+        Stores the years for which data is available
+        for a specific school. Relates to 
+        :model:`api.School`.
+    '''
+
     school = ForeignKey(School)
     exam_year = IntegerField(db_index=True)
     div_name = CharField(max_length=10, null=False)
