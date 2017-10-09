@@ -40,6 +40,7 @@ PREREQ_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admindocs',
     'rest_framework',
     'django_filters',
     'corsheaders',
