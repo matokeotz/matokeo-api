@@ -13,9 +13,14 @@ from api.serializers.student_serializers import StudentSerializer, StudentSubjec
 
 class StudentView(ListAPIView):
     ''' 
-        This is a read-only views that lets users
-        see a list of all available schools
+        This is a read-only views represents
+        `Student`.
+
+        get:
+        Return a list of all available students
+
     '''
+
     model = Student
     serializer_class = StudentSerializer
     queryset = Student.objects.all()
@@ -29,6 +34,16 @@ class StudentSubjectGradeFilter(FilterSet):
         fields = ('student', 'subject', 'grade')
 
 class StudentSubjectGradeView(ListAPIView):
+    '''
+        This is a read-only view that represents
+        `StudentSubjectGrade`. 
+
+        get:
+        Returns a list of grades by subject for
+        a given student. Provides filters for
+        `subject` and `grade`.
+    '''
+
     serializer_class = StudentSubjectGradeSerializer
     filter_class = StudentSubjectGradeFilter
     
@@ -47,6 +62,16 @@ class SchoolStudentFilter(FilterSet):
         fields = ('graduation_year', 'gender', 'division', 'aggregate_score')
 
 class SchoolStudentView(ListAPIView):
+    '''
+        This is a read-only view that represents
+        `SchoolStudent`.
+
+        get:
+        Returns a list of students by a given
+        school. Provides filters for `graduation_year`,
+        `gender`, `division`, and `aggregate_score`.
+    '''
+
     serializer_class = SchoolStudentSerializer
     filter_class = SchoolStudentFilter
 

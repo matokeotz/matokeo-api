@@ -10,6 +10,13 @@ from api.models.grade_models import Grade
 from api.serializers.grade_serializers import GradeSerializer
 
 class GradeView(ListAPIView):
+    '''
+        This is a read-only view that represents
+        `Grade`.
+
+        get:
+        Return a list of all available grades
+    '''
 
     model = Grade
     serializer_class = GradeSerializer
