@@ -33,11 +33,11 @@ class Zone(Model):
 
 # model to link schools with zones and regions
 class SchoolLocation(Model):
-    zone = ForeignKey(Zone)
     school = ForeignKey(School)
     region = ForeignKey(Region)
     district = ForeignKey(District)
-    latitude = DecimalField(max_digits=13, decimal_places=10, default=-6.3690 )
+    zone = ForeignKey(Zone)
+    latitude = DecimalField(max_digits=13, decimal_places=10, default=-6.3690)
     longitude = DecimalField(max_digits=13, decimal_places=10, default=34.8888)
 
     def __str__(self):

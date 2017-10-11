@@ -23,7 +23,11 @@ class ZoneSerializer(ModelSerializer):
         fields = ('name')
 
 class SchoolLocationSerializer(ModelSerializer):
+    school = StringRelatedField()
+    region = StringRelatedField()
+    district = StringRelatedField()
+    zone = StringRelatedField()
 
     class Meta:
         model = SchoolLocation
-        fields = ('zone', 'school', 'region', 'district', 'latitude', 'longitude')
+        fields = ('school', 'region', 'district', 'zone', 'latitude', 'longitude')

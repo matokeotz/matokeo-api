@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from django_filters.rest_framework import Filter, FilterSet
 from django_filters.fields import Lookup
 
+from api.utils.filters import field_filter
+
 from api.models.location_models import Region, District, Zone, SchoolLocation
 
 from api.serializers.location_serializers import RegionSerializer, DistrictSerializer, ZoneSerializer, SchoolLocationSerializer
@@ -27,8 +29,18 @@ class ZoneView(ListAPIView):
     serializer_class = ZoneSerializer
     queryset = Zone.objects.all()
 
+class SchoolLocationFilter(FilterSet):
+    district = Filter(name='district', method=field_filter)
+
+    class Meta:
+        model = SchoolLocation
+        fields = ['district']
+
 class SchoolLocationView(ListAPIView):
 
-    model = SchoolLocation
     serializer_class = SchoolLocationSerializer
-    queryset = SchoolLocation.objects.all()
+    filter_class = SchoolLocationFilter
+
+    def get_queryset(self):
+        region = self.kwargs['region']
+        return SchoolLocation.objects.filter(region__name=region)
