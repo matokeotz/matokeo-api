@@ -10,6 +10,11 @@ from api.models.grade_models import Grade
 
 # model for students
 class Student(Model):
+    '''
+        Stores information on a single student
+        Relates to :model:`api.School`.
+    '''
+
     identifier = CharField(max_length=15)
     gender = CharField(max_length=2)
     aggregate_score = IntegerField(db_index=True)
@@ -22,6 +27,13 @@ class Student(Model):
 
 # model to link students with subjects and grades
 class StudentSubjectGrade(Model):
+    '''
+        Stores the grade of a specific student for
+        a specific subject. Relates
+        :model:`api.Student`, :model:`api.Subject`,
+        and :model:`api.Grade`.
+    '''
+
     student = ForeignKey(Student)
     subject = ForeignKey(Subject)
     grade = ForeignKey(Grade)

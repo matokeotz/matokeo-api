@@ -8,6 +8,10 @@ from api.models.school_models import School
 
 # model for regions
 class Region(Model):
+    '''
+        Stores information on a single region
+    '''
+
     name = CharField(max_length=50, unique=True, null=False, default="Unknown Region", db_index=True)
     latitude = DecimalField(max_digits=13, decimal_places=10, default= -6.3690 )
     longitude = DecimalField(max_digits=13, decimal_places=10, default= 34.8888)
@@ -17,6 +21,10 @@ class Region(Model):
 
 # model for districts
 class District(Model):
+    '''
+        Stores information on a single district
+    '''
+
     name = CharField(max_length=50, unique=True, null=False, default="Unknown District")
     latitude = DecimalField(max_digits=13, decimal_places=10, default=-6.3690)
     longitude = DecimalField(max_digits=13, decimal_places=10, default= 34.8888)
@@ -26,6 +34,10 @@ class District(Model):
 
 # model for zones
 class Zone(Model):
+    '''
+        Stores information on a single zone
+    '''
+
     name = CharField(max_length=50, unique=True, null=False, default="Unknown Zone")
 
     def __str__(self):
@@ -33,6 +45,14 @@ class Zone(Model):
 
 # model to link schools with zones and regions
 class SchoolLocation(Model):
+    '''
+        Stores information on the region, district,
+        and zone that a specific school is located
+        in. Relates :model:`api.School`,
+        :model:`api.Region`, :model:`api.District`,
+        and :model:`api.Zone`.
+    '''
+
     school = ForeignKey(School)
     region = ForeignKey(Region)
     district = ForeignKey(District)

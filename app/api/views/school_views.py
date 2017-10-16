@@ -13,18 +13,27 @@ from api.serializers.school_serializers import SchoolSerializer, SchoolStatistic
 
 class SchoolView(ListAPIView):
     ''' 
-        This is a read-only view that lets users
-        see a list of all available schools
+        This is a read-only view that represents
+        `School`.
+
+        get:
+        Returns a list of all available schools.
     '''
+
     model = School
     serializer_class = SchoolSerializer
     queryset = School.objects.all()
 
 class SchoolStatisticsView(ListAPIView):
     '''
-        This is a read-only view that lets users
-        see a exam years by school
+        This is a read-only view that represents
+        `SchoolStatistics`. 
+
+        get:
+        Returns a list of exam_years by a given
+        school.
     '''
+
     model = SchoolStatistics
     serializer_class = SchoolStatisticsSerializer
 

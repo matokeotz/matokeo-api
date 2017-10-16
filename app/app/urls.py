@@ -16,8 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from rest_framework.documentation import include_docs_urls
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^docs/', include_docs_urls(title='Matokeo API')),
     url(r'^api/', include('api.urls.student_urls')),
     url(r'^api/', include('api.urls.subject_urls')),
     url(r'^api/', include('api.urls.grade_urls')),
