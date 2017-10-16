@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# secret key
+app/app/settings/key.py
+
+# migrations
+app/api/migrations
